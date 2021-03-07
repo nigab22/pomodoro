@@ -1,0 +1,141 @@
+:root {
+  --orange: #f87070;
+  --cyan-blue: #70f3f8;
+  --magenta: #d881f8;
+  --dark-blue: #1e213f;
+  --darker-blue: #161932;
+  --light-grey: #d7e0ff;
+  --lighter-grey: #eff1fa;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--dark-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 2% 0 3% 0;
+  font-family: 'Kumbh Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 32px;
+  color: var(--light-grey);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 373px;
+  height: 63px;
+  background: var(--darker-blue);
+  border-radius: 31.5px;
+}
+
+.nav-item {
+  padding: 20px;
+  font-family: 'kumbh Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+  color: var(--light-grey);
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+nav > ul {
+  display: flex;
+  outline-style: none;
+  list-style: none;
+  z-index: 1;
+}
+
+#nav-item-selected {
+  width: 100px;
+  height: 16px;
+  align-self: center;
+  background: linear-gradient(
+    209.21deg,
+    rgb(255, 115, 115) 13.57%,
+    rgb(73, 30, 184) 98.38%
+  );
+  border-radius: 31.5px;
+  color: var(--dark-blue);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#outer-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10% 0 15% 0;
+  width: 410px;
+  height: 410px;
+  border-radius: 50%;
+  background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+  box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
+  z-index: -1;
+}
+
+#inner-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 366px;
+  height: 366px;
+  border-radius: 50%;
+  background: var(--darker-blue);
+  user-select: none;
+}
+
+#ring {
+  stroke-width: 8;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-dasharray: 1045;
+  stroke-dashoffset: 0;
+  transform: rotate(-90deg);
+  transform-origin: 50% 51%;
+}
+
+#timer {
+  font-family: 'kumbh Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 101px;
+  letter-spacing: -5px;
+  fill: var(--light-grey);
+}
+
+#timer-control {
+  margin-right: -13px;
+  font-family: 'Kumbh Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 15px;
+  fill: #a85aa4fa;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+#settings-icon {
+  margin-bottom: 4%;
+  width: 27px;
+  height: 28px;
+  opacity: 0.5;
+}

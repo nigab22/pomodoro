@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>pomodoro</title>
+</head>
+<body>
+    <h1>pomodoro</h1>
+    <nav>
+        <ul>
+            <li class="nav-item" id="nav-item-selected">pomodoro</li>
+            <li class="nav-item">short break</li>
+            <li class="nav-item">long break</li>
+        </ul>
+    </nav>
+
+    <section>
+        <div id="outer-circle">
+            <div id="inner-circle">
+                <div>
+                    <svg height="359" width="359"> 
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="rgb(255, 115, 115)" />
+                                <stop offset="100%" stop-color="rgb(73, 30, 184) " />
+                            </linearGradient>
+                        </defs>
+                        <circle stroke="url(#gradient)" id="ring" cx="180" cy="185" r="166"/>         
+                        <text x="50%" y="50%" id="timer" dominant-baseline="middle" text-anchor="middle">25:00</text>
+                        <text x="50%" y="75%" id="timer-control" dominant-baseline="middle" text-anchor="middle">start</text>
+                    </svg>              
+                </div>           
+            </div>
+        </div>
+    </section>
+
+    <section id="settings-icon">
+        <img src="images/icon-settings.svg" alt="settings icon">
+    </section>
+
+</body>
+<script src="js/index.js" type="module"></script>
+
+</html>
