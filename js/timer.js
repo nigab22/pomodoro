@@ -1,6 +1,7 @@
 export class Timer {
   constructor(time = 25) {
     this.navItems = document.querySelectorAll('nav > ul > li');
+    this.selectedTimer = document.getElementById('nav-item-selected');
     this.action = document.getElementById('timer-control');
     this.clock = document.getElementById('timer');
     this.ring = document.getElementById('ring');
@@ -11,11 +12,12 @@ export class Timer {
     this.min = time - 1;
     this.sec = 60;
     this.timerCounter = 0;
+    this.firstTimeRunning = true;
   }
 
   start() {
     const ringCalculation = 1045 / ((this.amountOfTime + 1) * 60);
-    console.log(this.timerCounter);
+
     const timer = () => {
       this.counter = setInterval(() => {
         animateRing();
@@ -26,7 +28,8 @@ export class Timer {
         this.clock.textContent = `${min}:${sec}`;
 
         if (this.min === 0 && this.sec === 0) {
-          //this.action.textContent = 'restart';
+          const timerSound = new Audio('images/timer.m4a');
+          timerSound.play();
           this.ring.style.strokeDashoffset = this.ringStroke;
           this.strokeDashoffset = this.ringStroke;
           this.min = this.amountOfTime;
@@ -52,14 +55,19 @@ export class Timer {
       this.ring.style.strokeDashoffset = this.strokeDashoffset;
     };
 
-    //Switch between pomodoro, short timer, and long timer
+    //Automatically switch between pomodoro, short timer, and long timer
     const switchTimer = () => {
       this.navItems.forEach((item) =>
         item.removeAttribute('id', 'nav-item-selected')
       );
 
-      console.log('ehh');
-      console.log(this.timerCounter, 'ee');
+      if (this.firstTimeRunning) {
+        if (this.selectedTimer.id == 'pomodoro') {
+          this.timerCounter = 1;
+        }
+      }
+
+      this.firstTimeRunning = false;
 
       switch (this.timerCounter) {
         case 0:
@@ -70,8 +78,6 @@ export class Timer {
           this.navItems[0].setAttribute('id', 'nav-item-selected');
           break;
         case 1:
-          console.log(this.timerCounter);
-
         case 3:
         case 5:
           this.reset(5, '05:00');

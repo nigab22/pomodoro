@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+    <link rel="icon" href="/images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Roboto+Slab:wght@700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <title>pomodoro</title>
 </head>
 <body>
@@ -28,8 +27,8 @@
                     <svg height="359" width="359"> 
                         <defs>
                             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="rgb(255, 115, 115)" />
-                                <stop offset="100%" stop-color="rgb(73, 30, 184) " />
+                                <stop id="ring-gradient-one" offset="0%"/>
+                                <stop id="ring-gradient-two" offset="100%"/>
                             </linearGradient>
                         </defs>
                         <circle stroke="url(#gradient)" id="ring" cx="180" cy="185" r="166"/>         
@@ -41,11 +40,77 @@
         </div>
     </section>
 
+    <!--Settings Modal:)-->
     <section id="settings-icon">
         <img src="images/icon-settings.svg" alt="settings icon">
     </section>
 
+    <section id="settings-container">
+        <form>
+            <div id="settings-title">
+                <h2>Settings</h2>
+                <img id="close-button" src="images/icon-close.svg">
+            </div>
+            <hr>
+            <div id="settings-time-input">
+                <h3>Time (Minutes)</h3>
+                <div id="time-input">
+                    <div>
+                        <label class="time-container" for="pomodoro">pomodoro</label>
+                        <div class="input-container">
+                            <input type="number" id="pomodoro" name="pomodoro" min=1 max=60 value=25>            
+                            <div class="arrow"> 
+                                <img src="/images/icon-arrow-up.svg" alt="" class="arrow-img">
+                                <img src="/images/icon-arrow-down.svg" alt="" class="arrow-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="time-container" for="short-break">short break</label>
+                        <div class="input-container">
+                            <input type="number" id="short-break" name="short-break" min=1 max=60 value="5">
+                            <div class="arrow"> 
+                                <img src="/images/icon-arrow-up.svg" alt="" class="arrow-img">
+                                <img src="/images/icon-arrow-down.svg" alt="" class="arrow-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="time-container" for="long-break">long break</label>
+                        <div class="input-container">
+                            <input type="number" id="long-break" name="long-break" min=1 max=60 value=15>
+                            <div class="arrow"> 
+                                <img src="/images/icon-arrow-up.svg" alt="" class="arrow-img">
+                                <img src="/images/icon-arrow-down.svg" alt="" class="arrow-img">
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
+               
+            </div> 
+            <hr class="line">          
+            <div id="settings-font-input">
+                <h3>Font</h3>
+                <div class="font-color">
+                    <div id="kumbh-sans" class="font selected-font">Aa</div>
+                    <div id="roboto-slab" class="font">Aa</div>
+                    <div id="space-mono" class="font">Aa</div>
+                </div>
+            </div>   
+            <hr class="line">     
+            <div id="settings-color-input">
+                <h3>Color</h3>
+                <div class="font-color">
+                    <div id="gradient-one" class="color selected-color">
+                        <span class="checkmark">&#10003;</span>
+                    </div>
+                    <div id="gradient-two" class="color"></div>
+                    <div id="gradient-three" class="color"></div>
+                </div>
+            </div>    
+            <button type="submit" id="settings-button">Apply</button>
+        </form>
+    </section>
 </body>
 <script src="js/index.js" type="module"></script>
-
 </html>

@@ -7,6 +7,12 @@
   --light-grey: #d7e0ff;
   --lighter-grey: #eff1fa;
   --white: #ffffff;
+  --gradient: linear-gradient(
+    209.21deg,
+    #FF7373 13.57%,
+    #491EB8 98.38%
+  );
+  --font: 'Kumbh Sans';
 }
 
 * {
@@ -19,18 +25,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: var(--font);
+  font-style: normal;
+  font-weight: bold;
 }
 
 h1 {
   margin: 2% 0 3% 0;
-  font-family: 'Kumbh Sans';
-  font-style: normal;
-  font-weight: bold;
   font-size: 32px;
   line-height: 32px;
   color: var(--light-grey);
+  user-select: none;
 }
 
+/*Navigation*/
 nav {
   display: flex;
   align-items: center;
@@ -39,13 +47,11 @@ nav {
   height: 63px;
   background: var(--darker-blue);
   border-radius: 31.5px;
+  user-select: none;
 }
 
 .nav-item {
   padding: 20px;
-  font-family: 'kumbh Sans';
-  font-style: normal;
-  font-weight: bold;
   font-size: 13px;
   line-height: 19px;
   text-align: center;
@@ -65,17 +71,14 @@ nav > ul {
   width: 100px;
   height: 16px;
   align-self: center;
-  background: linear-gradient(
-    209.21deg,
-    rgb(255, 115, 115) 13.57%,
-    rgb(73, 30, 184) 98.38%
-  );
+  background: var(--gradient);
   border-radius: 31.5px;
   color: var(--dark-blue);
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
 
+/* Timer Ring*/
 #outer-circle {
   display: flex;
   align-items: center;
@@ -110,10 +113,15 @@ nav > ul {
   transform-origin: 50% 51%;
 }
 
+#ring-gradient-one {
+  stop-color:   #FF7373;
+}
+
+#ring-gradient-two {
+  stop-color: #491EB8;
+}
+
 #timer {
-  font-family: 'kumbh Sans';
-  font-style: normal;
-  font-weight: bold;
   font-size: 100px;
   line-height: 101px;
   letter-spacing: -5px;
@@ -122,9 +130,6 @@ nav > ul {
 
 #timer-control {
   margin-right: -13px;
-  font-family: 'Kumbh Sans';
-  font-style: normal;
-  font-weight: bold;
   font-size: 16px;
   line-height: 16px;
   letter-spacing: 15px;
@@ -133,9 +138,231 @@ nav > ul {
   text-transform: uppercase;
 }
 
+/*Settings Modal*/
 #settings-icon {
   margin-bottom: 4%;
   width: 27px;
   height: 28px;
   opacity: 0.5;
+  cursor: pointer;
+}
+
+#close-button{
+  cursor: pointer;
+}
+
+#settings-container {
+  display: none;
+  position: fixed; 
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding-top: 120px;
+}
+
+form {
+  width: 540px;
+  height: 490px;
+  margin: auto;
+  background: var(--white);
+  border-radius: 25px;
+  user-select: none;
+}
+
+#settings-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0 30px 40px;
+}
+
+#settings-title > h2 {
+  font-size: 28px;
+  line-height: 28px;
+  color: var(--darker-blue);
+}
+
+#settings-title > img {
+  padding-right: 30px;
+  width: 14px;
+  height: 14px;
+}
+
+hr {
+  border: none;
+  height: 0.5px;
+  background: #e3e1e1;
+}
+
+#settings-time-input,
+#settings-font-input,
+#settings-color-input {
+  padding: 30px 0 15px 38px;
+  height: 109px;
+  width: 462px;
+}
+
+#settings-time-input > h3,
+#settings-font-input > h3,
+#settings-color-input > h3 {
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 13px;
+  letter-spacing: 5px;
+  color: var(--darker-blue);
+}
+
+#time-input {
+  display: flex;
+  margin: 10px 0 20px 0;
+}
+
+#time-input > div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.time-container {
+  padding-top: 15px;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--darker-blue);
+  opacity: 0.4;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container > .arrow {
+  position: absolute;
+  top: 23px;
+  right: 10px;
+}
+
+input {
+  margin-top: 7px;
+  height: 48px;
+  width: 125px;
+  padding-left: 16px;
+  border-radius: 10px;
+  border-style: none;
+  outline: none;
+  background: var(--lighter-grey);
+}
+
+input[type='number'] {
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--dark-blue);
+  font-family: var(--font);
+  font-weight: bold;
+  /* Hide default arrow: Firefox */
+  -moz-appearance: textfield;
+}
+
+/* Hide default arrow: Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.arrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 12px;
+  height: 17px;
+}
+
+#settings-color-input,
+#settings-font-input {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+
+#settings-color-input > h3,
+#settings-font-input > h3 {
+  margin-top: 15px;
+}
+
+.font-color {
+  display: flex;
+  justify-content: space-between;
+  width: 152px;
+  height: 40px;
+}
+
+.font,
+.color {
+  display: flex;
+  background: var(--lighter-grey);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.line {
+  margin: 0 40px 0 40px;
+}
+
+#kumbh-sans{
+  font-family: 'kumbh sans';
+}
+
+#roboto-slab{
+  font-family: 'roboto-slab';
+}
+
+#space-mono{
+  font-family: 'space mono' ;
+}
+
+#gradient-one {
+  background: linear-gradient(
+    209.21deg,
+    #FF7373 13.57%,
+    #491EB8 98.38%
+  );
+}
+
+#gradient-two {
+  background: linear-gradient(
+    209.21deg,
+    #416CE2 13.57%, 
+    #56D7DE 98.38%
+  );
+}
+
+#gradient-three {
+  background: linear-gradient(
+    209.21deg, 
+    #311b92 13.57%,
+    #ffee58 98.38%
+  );
+}
+
+.selected-font {
+  background: var(--darker-blue);
+  color: var(--white);
+}
+
+button {
+  width: 140px;
+  height: 53px;
+  margin: 22px 0 0 200px;
+  border-radius: 26.5px;
+  border: none;
+  outline-style: none;
+  background: var(--gradient);
+  font-size: 16px;
+  line-height: 16.09px;
+  font-weight: bold;
+  color: var(--white);
+  cursor: pointer;
 }
