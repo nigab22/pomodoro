@@ -10,6 +10,9 @@ const ringColorOne = document.getElementById('ring-gradient-one');
 const ringColorTwo = document.getElementById('ring-gradient-two');
 const timerAction = document.getElementById('timer-control');
 const applyButton = document.getElementById('settings-button');
+let pomodoro = document.getElementById('pd').value;
+let shortBreak = document.getElementById('sb').value;
+let longBreak = document.getElementById('lb').value;
 
 //Start, pause, or restart timer
 action.addEventListener('click', () => {
@@ -32,20 +35,38 @@ navItems.forEach((item) => {
 const timerType = (item) => {
   switch (item.toLowerCase()) {
     case 'pomodoro':
-      timer.reset(25, '25:00');
+      timer.reset(pomodoro, `${pomodoro}:00`);
       break;
     case 'short break':
-      timer.reset(5, '05:00');
+      timer.reset(shortBreak, `${shortBreak}:00`);
       break;
     case 'long break':
-      timer.reset(15, '15:00');
+      timer.reset(longBreak, `${longBreak}:00`);
       break;
   }
 };
 
 /**Settings**/
 
-//Select font color from settings
+//Increase or decrease minutes in settings modal
+const upArrow = document.querySelectorAll('.arrow-up');
+const downArrow = document.querySelectorAll('.arrow-down');
+
+upArrow.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    let inputId = item.id.substr(0, 2);
+    document.getElementById(inputId).stepUp();
+  });
+});
+
+downArrow.forEach((item) => {
+  item.addEventListener('click', () => {
+    let inputId = item.id.substr(0, 2);
+    document.getElementById(inputId).stepDown();
+  });
+});
+
+//Select font color in settings modal
 fontOptions.forEach((item) => {
   item.addEventListener('click', () => {
     fontOptions.forEach((item) => {
@@ -55,7 +76,7 @@ fontOptions.forEach((item) => {
   });
 });
 
-//Select font color from settings
+//Select font color in settings modal
 colorOptions.forEach((item) => {
   item.addEventListener('click', () => {
     colorOptions.forEach((item) => {
@@ -67,9 +88,16 @@ colorOptions.forEach((item) => {
   });
 });
 
-//Apply user selected settings for font and/or color
+//Apply user selected settings for time input, font, and color
 applyButton.addEventListener('click', (e) => {
   e.preventDefault();
+
+  pomodoro = document.getElementById('pd').value;
+  shortBreak = document.getElementById('sb').value;
+  longBreak = document.getElementById('lb').value;
+
+  const selectedTimer = document.getElementById('nav-item-selected').innerHTML;
+  timerType(selectedTimer);
 
   fontOptions.forEach((item) => {
     if (item.classList.contains('selected-font')) {
@@ -138,9 +166,3 @@ closeButton.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
   if (e.target == settingsContainer) settingsContainer.style.display = 'none';
 });
-
-// = function (event) {
-//   if (event.target == modal) {
-//     modal.style.display = 'none';
-//   }
-// };

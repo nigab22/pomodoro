@@ -1,12 +1,10 @@
 export class Timer {
   constructor(time = 25) {
     this.navItems = document.querySelectorAll('nav > ul > li');
-    this.selectedTimer = document.getElementById('nav-item-selected');
     this.action = document.getElementById('timer-control');
     this.clock = document.getElementById('timer');
     this.ring = document.getElementById('ring');
-    this.ringStroke = 0;
-    this.strokeDashoffset = this.ringStroke;
+    this.strokeDashoffset = 0;
     this.timeText = '25:00';
     this.amountOfTime = time - 1;
     this.min = time - 1;
@@ -16,86 +14,31 @@ export class Timer {
   }
 
   start() {
-    const ringCalculation = 1045 / ((this.amountOfTime + 1) * 60);
+    this.counter = setInterval(() => {
+      this.animateRing();
+      this.sec--;
 
-    const timer = () => {
-      this.counter = setInterval(() => {
-        animateRing();
-        this.sec--;
+      let min = this.formatTime(this.min);
+      let sec = this.formatTime(this.sec);
+      this.clock.textContent = `${min}:${sec}`;
 
-        let min = formatTime(this.min);
-        let sec = formatTime(this.sec);
-        this.clock.textContent = `${min}:${sec}`;
-
-        if (this.min === 0 && this.sec === 0) {
-          const timerSound = new Audio('images/timer.m4a');
-          timerSound.play();
-          this.ring.style.strokeDashoffset = this.ringStroke;
-          this.strokeDashoffset = this.ringStroke;
-          this.min = this.amountOfTime;
-          this.sec = 60;
-          clearInterval(this.counter);
-          switchTimer();
-        }
-
-        if (this.sec === 0) {
-          this.min--;
-          this.sec = 60;
-        }
-      }, 10);
-    };
-
-    const formatTime = (x) => {
-      if (x < 10) return '0' + x;
-      return x;
-    };
-
-    const animateRing = () => {
-      this.strokeDashoffset += ringCalculation;
-      this.ring.style.strokeDashoffset = this.strokeDashoffset;
-    };
-
-    //Automatically switch between pomodoro, short timer, and long timer
-    const switchTimer = () => {
-      this.navItems.forEach((item) =>
-        item.removeAttribute('id', 'nav-item-selected')
-      );
-
-      if (this.firstTimeRunning) {
-        if (this.selectedTimer.id == 'pomodoro') {
-          this.timerCounter = 1;
-        }
+      if (this.min === 0 && this.sec === 0) {
+        const timerSound = new Audio('images/timer.m4a');
+        timerSound.play();
+        this.ring.style.strokeDashoffset = 0;
+        this.strokeDashoffset = 0;
+        this.min = this.amountOfTime;
+        this.sec = 60;
+        clearInterval(this.counter);
+        this.switchTimer();
       }
 
-      this.firstTimeRunning = false;
-
-      switch (this.timerCounter) {
-        case 0:
-        case 2:
-        case 4:
-        case 6:
-          this.reset(25, '25:00');
-          this.navItems[0].setAttribute('id', 'nav-item-selected');
-          break;
-        case 1:
-        case 3:
-        case 5:
-          this.reset(5, '05:00');
-          this.navItems[1].setAttribute('id', 'nav-item-selected');
-          break;
-        case 7:
-          this.reset(15, '15:00');
-          this.navItems[2].setAttribute('id', 'nav-item-selected');
-          break;
-        case 8:
-          this.reset(25, '25:00');
-          this.navItems[0].setAttribute('id', 'nav-item-selected');
-          this.timerCounter = 0;
+      if (this.sec === 0) {
+        this.min--;
+        this.sec = 60;
       }
-      this.timerCounter++;
-    };
+    }, 1000);
 
-    timer();
     this.action.textContent = 'pause';
   }
 
@@ -112,13 +55,58 @@ export class Timer {
 
   reset(time = 25, timeText = '25:00') {
     this.pause();
-    this.strokeDashoffset = this.ringStroke;
+    this.strokeDashoffset = 0;
     this.ring.style.strokeDashoffset = 0;
     this.clock.textContent = timeText;
     this.amountOfTime = time - 1;
     this.min = time - 1;
     this.sec = 60;
   }
+
+  //Automatically switch between pomodoro, short timer, and long timer
+  switchTimer = () => {
+    this.selectedTimer = document.getElementById('nav-item-selected');
+
+    if (this.firstTimeRunning) {
+      if (this.selectedTimer.innerHTML == 'pomodoro') {
+        this.timerCounter = 1;
+      }
+    }
+    this.firstTimeRunning = false;
+
+    this.navItems.forEach((item) =>
+      item.removeAttribute('id', 'nav-item-selected')
+    );
+
+    let pomodoro = document.getElementById('pd').value;
+    let shortBreak = document.getElementById('sb').value;
+    let longBreak = document.getElementById('lb').value;
+
+    switch (this.timerCounter) {
+      case 0:
+      case 2:
+      case 4:
+      case 6:
+        this.reset(pomodoro, `${pomodoro}:00`);
+        this.navItems[0].setAttribute('id', 'nav-item-selected');
+        break;
+      case 1:
+      case 3:
+      case 5:
+        this.reset(shortBreak, `${shortBreak}:00`);
+        this.navItems[1].setAttribute('id', 'nav-item-selected');
+        break;
+      case 7:
+        this.reset(longBreak, `${longBreak}:00`);
+        this.navItems[2].setAttribute('id', 'nav-item-selected');
+        break;
+      case 8:
+        this.reset(pomodoro, `${pomodoro}:00`);
+        this.navItems[0].setAttribute('id', 'nav-item-selected');
+        this.timerCounter = 0;
+    }
+    this.timerCounter++;
+  };
 
   callAction() {
     switch (this.action.textContent.toLowerCase()) {
@@ -133,4 +121,16 @@ export class Timer {
         break;
     }
   }
+
+  /*Helper Methods */
+  formatTime = (x) => {
+    if (x < 10) return '0' + x;
+    return x;
+  };
+
+  animateRing = () => {
+    const ringCalculation = 1045 / ((this.amountOfTime + 1) * 60);
+    this.strokeDashoffset += ringCalculation;
+    this.ring.style.strokeDashoffset = this.strokeDashoffset;
+  };
 }
