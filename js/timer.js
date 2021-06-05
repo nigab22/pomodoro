@@ -23,8 +23,8 @@ export class Timer {
       this.clock.textContent = `${min}:${sec}`;
 
       if (this.min === 0 && this.sec === 0) {
-        const timerSound = new Audio('images/timer.m4a');
-        timerSound.play();
+        //const timerSound = new Audio('images/timer.m4a');
+        //timerSound.play();
         this.ring.style.strokeDashoffset = 0;
         this.strokeDashoffset = 0;
         this.min = this.amountOfTime;
@@ -63,7 +63,7 @@ export class Timer {
     this.sec = 60;
   }
 
-  //Automatically switch between pomodoro, short timer, and long timer
+  /* Function to automatically switch between pomodoro, short timer, and long timer */
   switchTimer = () => {
     this.selectedTimer = document.getElementById('nav-item-selected');
 
@@ -108,7 +108,8 @@ export class Timer {
     this.timerCounter++;
   };
 
-  callAction() {
+  /* Function to handle user action */
+  userAction() {
     switch (this.action.textContent.toLowerCase()) {
       case 'start':
         this.start();
@@ -122,7 +123,7 @@ export class Timer {
     }
   }
 
-  /*Helper Methods */
+  /* ------------------------------ Helper functions ------------------------------ */
   formatTime = (x) => {
     if (x < 10) return '0' + x;
     return x;

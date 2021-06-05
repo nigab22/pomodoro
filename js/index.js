@@ -14,12 +14,12 @@ let pomodoro = document.getElementById('pd').value;
 let shortBreak = document.getElementById('sb').value;
 let longBreak = document.getElementById('lb').value;
 
-//Start, pause, or restart timer
+/* --------------- Start, pause, or restart timer on user action ---------------- */
 action.addEventListener('click', () => {
-  timer.callAction();
+  timer.userAction();
 });
 
-//Select pomodoro, short break or long break
+/* -------- Switch to pomodoro, short break or long break on user action -------- */
 navItems.forEach((item) => {
   item.addEventListener('click', (e) => {
     navItems.forEach((item) => {
@@ -46,7 +46,7 @@ const timerType = (item) => {
   }
 };
 
-/**Settings**/
+/* ------------------------------- Settings Modal ------------------------------- */
 
 //Increase or decrease minutes in settings modal
 const upArrow = document.querySelectorAll('.arrow-up');
@@ -66,7 +66,7 @@ downArrow.forEach((item) => {
   });
 });
 
-//Select font color in settings modal
+//Select font in settings modal
 fontOptions.forEach((item) => {
   item.addEventListener('click', () => {
     fontOptions.forEach((item) => {
@@ -76,7 +76,7 @@ fontOptions.forEach((item) => {
   });
 });
 
-//Select font color in settings modal
+//Select color in settings modal
 colorOptions.forEach((item) => {
   item.addEventListener('click', () => {
     colorOptions.forEach((item) => {
