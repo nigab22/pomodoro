@@ -3,7 +3,7 @@
 Frontend Mentor Challenge: https://www.frontendmentor.io 
 
 
-### Tech Stack
+### Built With
 - CSS
 - JavaScript 
 - HTML
@@ -17,7 +17,10 @@ Frontend Mentor Challenge: https://www.frontendmentor.io
 - See a circular progress bar on timer
 
 
-### Live Project Link
-   
+### Demo 
+
+- View live project on here  
+
+
 ![image](https://user-images.githubusercontent.com/76473196/120900391-8b0c3780-c602-11eb-960c-abd4348bdd49.png)
 
