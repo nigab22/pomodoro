@@ -17,7 +17,7 @@ Frontend Mentor Challenge: https://www.frontendmentor.io
 - See a circular progress bar on timer
 
 
-### UI 
+### Design  
 
-![image](https://user-images.githubusercontent.com/76473196/120899913-091b0f00-c600-11eb-8329-d608eb533e45.png)
+![image](https://user-images.githubusercontent.com/76473196/120900051-dc1b2c00-c600-11eb-8ec6-c24a203b9a1f.png)
 
