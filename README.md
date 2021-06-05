@@ -19,5 +19,5 @@ Frontend Mentor Challenge: https://www.frontendmentor.io
 
 ### Design  
 
-![image](https://user-images.githubusercontent.com/76473196/120900322-3963ad00-c602-11eb-80b6-48461c09fcb5.png)
+![Uploading image.png…]()
 
