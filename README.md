@@ -1,15 +1,15 @@
-#⏰🍅Pomodoro Timer App 🍅⏰
+⏰🍅 ##Pomodoro Timer App 🍅⏰
 
 Frontend Mentor Challenge: https://www.frontendmentor.io 
 
 
-## Tech Stack
+### Tech Stack
 - CSS
-- HTML
 - JavaScript 
+- HTML
 
 
-## Features 
+### Features 
 
 - Set a pomodoro timer and short & long break timers 
 - Customize how long each timer runs for
