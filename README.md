@@ -1,4 +1,4 @@
-⏰🍅 ##Pomodoro Timer App 🍅⏰
+## Pomodoro Timer App 🍅⏰
 
 Frontend Mentor Challenge: https://www.frontendmentor.io 
 
