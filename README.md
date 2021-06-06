@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/76473196/120900391-8b0c3780-c602-11eb-960c-abd4348bdd49.png)
 
-##### <p align="center">View live project [here](https://nina-pomodoro-app.netlify.app/)</p>
+#### <p align="center">View live project [here](https://nina-pomodoro-app.netlify.app/)</p>
 
 
 
