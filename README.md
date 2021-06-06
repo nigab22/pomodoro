@@ -1,6 +1,9 @@
 ## Pomodoro Timer App 🍅⏰
 
-Frontend Mentor Challenge: https://www.frontendmentor.io 
+![image](https://user-images.githubusercontent.com/76473196/120900391-8b0c3780-c602-11eb-960c-abd4348bdd49.png)
+
+View live project [here](https://nina-pomodoro-app.netlify.app/)
+
 
 
 ### Built With
@@ -17,11 +20,14 @@ Frontend Mentor Challenge: https://www.frontendmentor.io
 - See a circular progress bar on timer
 
 
-### Demo 
+### Installation 
 
-- View live project [here](https://nina-pomodoro-app.netlify.app/)
+- Clone the repo: https://github.com/ninagab/pomodoro.git
+- Run using live server within IDE or Editor   
 
 
+### Acknowledgement
 
-![image](https://user-images.githubusercontent.com/76473196/120900391-8b0c3780-c602-11eb-960c-abd4348bdd49.png)
+- Frontend Mentor Challenge: https://www.frontendmentor.io   
+
 
